@@ -1,8 +1,6 @@
 import style from './style.module.scss'
 
-
 export default function Pagination ({totalPages, henderlNextPage, henderlPrevPage, henderPageClick, currentPage}) {
-
 
   return(
     <div className={style.pagination}>
