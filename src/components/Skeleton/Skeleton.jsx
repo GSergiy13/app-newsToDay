@@ -1,8 +1,6 @@
 import style from './style.module.scss'
 
 export default function Skeleton ({count=1, type='banner'}) {
-
-  console.log(Array(count));
   return(
     <>
      {
