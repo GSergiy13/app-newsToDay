@@ -8,6 +8,8 @@ import {getNews, getCategories} from '../../api/apiNews.js';
 import Skeleton from '../../components/Skeleton/Skeleton.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import Categories from '../../components/Categories/Categories.jsx';
+import Search from '../../components/Search/Search.jsx';
+import { useDebounce } from '../../helper/hooks/useDebounce.js';
 
 export default function Main() {
   const [news, setNews] = useState([]);
@@ -15,8 +17,11 @@ export default function Main() {
   const [currentPage, setCurrentPage] = useState(1);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [keywords, setKeywords] = useState('');
   const totalPages = 10;
   const pageSize = 10;
+
+  const debouncedKewordsSerch = useDebounce(keywords, 1000);
 
   // News requst
   const fetchNews = async (currentPage) => {
@@ -25,7 +30,8 @@ export default function Main() {
       const response = await getNews({
         page_number: currentPage,
         page_size: pageSize,
-        category: selectedCategory
+        category: selectedCategory,
+        keywords: debouncedKewordsSerch
       });
 
       setNews(response.news);
@@ -45,11 +51,10 @@ export default function Main() {
       console.log(error);
     }
   };
-
-
+  
   useEffect(() => {
     fetchNews(currentPage);
-  }, [currentPage, selectedCategory]);
+  }, [currentPage, selectedCategory, debouncedKewordsSerch]);
 
   useEffect(() => {
     fetchCategory();
@@ -71,10 +76,10 @@ export default function Main() {
       setCurrentPage(page_number)
   }
 
-
   return(
     <main className={style.main}>
       <Categories categories={categories} setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
+      <Search keywords={keywords} setKeywords={setKeywords} />
 
       {news.length  > 0 && !isLoading ? <NewsBanner  item={news[0]}/> : <Skeleton count={1} type='banner' />}
 
@@ -93,7 +98,7 @@ export default function Main() {
           <Skeleton count={10} type='item' />
       }
 
-{
+    {
         <Pagination 
           henderlNextPage={henderlNextPage}
           henderlPrevPage={henderlPrevPage}
