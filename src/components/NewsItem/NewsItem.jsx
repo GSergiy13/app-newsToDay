@@ -1,5 +1,6 @@
-import { formatTimeAgo } from '../../helper/formatTimeAgo';
 import style from './style.module.scss';
+
+import { formatTimeAgo } from '../../helper/formatTimeAgo';
 
 export default function NewsItem ({item}) {
   return(
@@ -20,3 +21,5 @@ export default function NewsItem ({item}) {
     </li>
   )
 }
+
+
