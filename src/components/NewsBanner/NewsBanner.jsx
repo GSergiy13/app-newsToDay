@@ -1,9 +1,10 @@
 import style from './style.module.scss';
 import { formatTimeAgo } from "../../helper/formatTimeAgo.js";
 import Image from '../Image/Image'
+import withSkeleton from '../../helper/hocs/withSkeleton.jsx';
 
 
-export default function NewsBanner ({item}) {
+function NewsBanner ({item}) {
   return(
     <div className={style.newsbaner}>
         <Image image={item?.image} />
@@ -19,3 +20,7 @@ export default function NewsBanner ({item}) {
     </div>
   )
 }
+
+const NewsBannerWithSkeleton = withSkeleton(NewsBanner, 'banner', 1);
+
+export default NewsBannerWithSkeleton;
