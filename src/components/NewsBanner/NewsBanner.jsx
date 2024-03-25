@@ -4,7 +4,6 @@ import Image from '../Image/Image';
 
 
 function NewsBanner ({item}) {
-  console.log(item);
   return(
     <div className={style.newsbaner}>
         <Image image={item?.image} />

@@ -1,12 +1,32 @@
 
+import { getNews } from '../../api/apiNews';
+import { useDebounce } from '../../helper/hooks/useDebounce';
+import { useFetch } from '../../helper/hooks/useFetch';
+import { useFilters } from '../../helper/hooks/useFilters';
 import NewsFilters from '../NewsFilters/NewsFilters';
 import NewsList from '../NewsList/NewsList'
+import PagginationWrapper from '../PagginationWrapper/PagginationWrapper';
 import Pagination from '../Pagination/Pagination'
-import { TOTAL_PAGE } from '../constants/constants';
+import { PAGE_SIZE, TOTAL_PAGE } from '../constants/constants';
 import style from './style.module.scss'
 
 
-export default function NewsByFilters({filters, changeFilter, isLoading, news}) {
+export default function NewsByFilters() {
+
+  const {filters, changeFilter} = useFilters({
+    page_number: 1,
+    page_size: PAGE_SIZE,
+    category: null,
+    keywords: ''
+  });
+
+const debouncedKewordsSerch = useDebounce(filters.keywords, 1000);
+
+const {data, err, isLoading} = useFetch(getNews, {
+  ...filters,
+  keywords: debouncedKewordsSerch
+})
+
 
   const henderlNextPage = () => {
     if(filters.currentPage < TOTAL_PAGE) {
@@ -29,25 +49,18 @@ export default function NewsByFilters({filters, changeFilter, isLoading, news}) 
 
       <NewsFilters filters={filters} changeFilter={changeFilter} />
 
-      {
-        <Pagination 
-          henderlNextPage={henderlNextPage}
-          henderlPrevPage={henderlPrevPage}
-          henderPageClick={henderPageClick}
-          currentPage={filters.page_number}
-          totalPages={TOTAL_PAGE} />
-      }
 
-      <NewsList news={news} isLoading={isLoading} />
-
-      {
-        <Pagination 
-          henderlNextPage={henderlNextPage}
-          henderlPrevPage={henderlPrevPage}
-          henderPageClick={henderPageClick}
-          currentPage={filters.page_number}
-          totalPages={TOTAL_PAGE} />
-      }
+      <PagginationWrapper
+        top
+        bottom
+        henderlNextPage={henderlNextPage}
+        henderlPrevPage={henderlPrevPage}
+        henderPageClick={henderPageClick}
+        currentPage={filters.page_number}
+        totalPages={TOTAL_PAGE} 
+      >
+        <NewsList news={data && data.news} isLoading={isLoading} />
+      </PagginationWrapper>
     </section>
   )
 }
