@@ -13,8 +13,6 @@ import withSkeleton from '../../helper/hocs/withSkeleton';
   )
 }
 
-
-
-
 const NewsListWithSkeleton = withSkeleton(NewsList, 'item', 10);
+
 export default NewsListWithSkeleton;

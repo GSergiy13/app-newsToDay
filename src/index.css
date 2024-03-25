@@ -9,7 +9,7 @@
 
 .container {
   width: 100%;
-  max-width: 1440px;
+  /* max-width: 1440px; */
   padding: 24px;
   min-height: 100%;
 }
