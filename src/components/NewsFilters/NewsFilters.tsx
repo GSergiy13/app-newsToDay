@@ -1,13 +1,20 @@
 import { getCategories } from "../../api/apiNews.js";
 import { useFetch } from "../../helper/hooks/useFetch.js";
+import { CategoriesApiResponse, IFilters } from "../../interfaces/index.js";
 import Categories from "../Categories/Categories.jsx";
 import Search from "../Search/Search.jsx";
 import Slider from "../Slider/Slider.jsx";
 import style from './style.module.scss'
 
 
-export default function NewsFilters ({filters, changeFilter}) {
-  const {data: dataCategories} = useFetch(getCategories);
+interface Props {
+  filters: IFilters;
+  changeFilter: (key: string, value: string | number | null) => void 
+}
+
+
+export default function NewsFilters ({filters, changeFilter} : Props) {
+  const {data: dataCategories} = useFetch<CategoriesApiResponse, null>(getCategories);
 
   return(
     <div className={style.filters}>
