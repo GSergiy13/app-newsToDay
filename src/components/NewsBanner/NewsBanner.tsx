@@ -1,9 +1,13 @@
 import style from './style.module.scss';
-import { formatTimeAgo } from "../../helper/formatTimeAgo.js";
+import { formatTimeAgo } from "../../helper/formatTimeAgo.ts";
 import Image from '../Image/Image';
+import { INews } from '../../interfaces/index.ts';
 
+interface Props {
+  item: INews;
+}
 
-function NewsBanner ({item}) {
+function NewsBanner ({item} : Props) {
   return(
     <div className={style.newsbaner}>
         <Image image={item?.image} />
@@ -14,7 +18,7 @@ function NewsBanner ({item}) {
         </h3>
 
         <div className={style.extra}>
-          {formatTimeAgo(item.published)} by {item.autor}
+          {formatTimeAgo(item.published)} by {item.author}
         </div> 
     </div>
   )

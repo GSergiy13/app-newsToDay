@@ -1,7 +1,7 @@
 import style from './style.module.scss'
 
-import LastNews from '../../components/LastNews/LastNews.jsx';
-import NewsByFilters from '../../components/NewsByFilters/NewsByFilters.jsx';
+import LastNews from '../../components/LastNews/LastNews';
+import NewsByFilters from '../../components/NewsByFilters/NewsByFilters';
 
 export default function Main() {
 

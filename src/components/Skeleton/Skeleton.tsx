@@ -1,6 +1,13 @@
+import { DirectionType, SkeletonType } from '../../interfaces'
 import style from './style.module.scss'
 
-export default function Skeleton ({count=1, type='banner', direction = 'column'}) {
+interface Props {
+  type?: SkeletonType, 
+  count?: number, 
+  direction?: DirectionType
+}
+
+export default function Skeleton ({count=  1, type='banner', direction = 'column'} : Props) {
   return(
     <>
      {
