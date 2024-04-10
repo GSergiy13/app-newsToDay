@@ -1,6 +1,9 @@
+import { IPaginationProps } from '../../interfaces'
 import style from './style.module.scss'
 
-export default function Pagination ({totalPages, henderlNextPage, henderlPrevPage, henderPageClick, currentPage}) {
+
+
+export default function Pagination ({totalPages, henderlNextPage, henderlPrevPage, henderPageClick, currentPage} : IPaginationProps) {
 
   return(
     <div className={style.pagination}>
