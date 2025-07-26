@@ -1,16 +1,31 @@
 .newsbaner {
-  display: flex;
-  width: 100%;
-  gap: 12px;
-  flex-direction: column;
+	display: flex;
+	width: 100%;
+	gap: 12px;
+	flex-direction: column;
 
+	.title {
+		font-size: 16px;
+		transition: all 0.3s ease;
+	}
 
-  .title {
-    font-size: 16px;
-  }
+	.extra {
+		font-size: 16px;
+		color: #6c7072;
+	}
 
-  .extra {
-    font-size: 16px;
-    color: #6C7072;
-  }
+	img {
+		border-radius: 8px;
+		filter: grayscale(0.5);
+		transition: all 0.3s ease;
+	}
+
+	&:hover {
+		.title {
+			color: #007bff;
+		}
+		img {
+			filter: grayscale(0);
+		}
+	}
 }

@@ -6,7 +6,7 @@ import {
 } from '../interfaces'
 
 const BASE_URL = 'https://api.currentsapi.services/v1/'
-const API_KEY = 'Cqo_bu_OTaec9N5DWJpbvACqY06Vv4qTfZlO4rTz5wD4inl6'
+const API_KEY = 'y2-wVf7jdAQFjssLDEjWEGNOYp0_WwMNPC1YCZrIqrdAm0_o'
 
 enum Status {
 	Error = 'error',

@@ -9,13 +9,16 @@ interface Props {
 }
 
 export default function NewsItem({ item }: Props) {
+	console.log(placeholderNewsItem)
 	return (
 		<li className={style.item}>
 			<div
 				className={style.wrapper}
 				style={{
 					backgroundImage: `url(${
-						item.image ? item.image : placeholderNewsItem
+						item.image === 'None' || !item.image
+							? placeholderNewsItem
+							: item.image
 					})`,
 				}}
 			></div>

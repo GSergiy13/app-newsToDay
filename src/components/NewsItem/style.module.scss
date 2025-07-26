@@ -1,30 +1,31 @@
 .item {
-  display: flex;
-  width: 100%;
-  gap: 12px;
+	display: flex;
+	width: 100%;
+	gap: 12px;
 
-  .info {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 8px;
-  }
+	.info {
+		display: flex;
+		width: 100%;
+		flex-direction: column;
+		gap: 8px;
+	}
 
-  .wrapper {
-    width: 64px;
-    height: 64px;
-    background-color: #f2f3f5;
-    background-position: center;
-    background-size: cover;
-    flex-shrink: 0;
-  }
+	.wrapper {
+		width: 64px;
+		height: 64px;
+		background-color: #f2f3f5;
+		background-position: center;
+		background-size: cover;
+		flex-shrink: 0;
+		border-radius: 8px;
+	}
 
-  .title {
-    font-size: 16px;
-  }
-  
-  .extra {
-    font-size: 16px;
-    color: #6C7072;
-  }
+	.title {
+		font-size: 16px;
+	}
+
+	.extra {
+		font-size: 16px;
+		color: #6c7072;
+	}
 }
