@@ -1,12 +1,22 @@
 .slider {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  width: 100%;
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	width: 100%;
+}
+
+.slider.dark .arrows {
+	background-color: #23272f;
+	color: #f6f7f9;
+}
+
+.slider.light .arrows {
+	background-color: white;
+	color: black;
 }
 
 .arrows {
-  border: none;
-  background: #fff;
-  cursor: pointer;
+	border: none;
+	background: #fff;
+	cursor: pointer;
 }

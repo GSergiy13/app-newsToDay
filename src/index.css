@@ -1,15 +1,35 @@
 * {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	box-sizing: border-box;
+	font-family: 'Inter', sans-serif;
 }
 
 .container {
-  width: 100%;
-  /* max-width: 1440px; */
-  padding: 24px;
-  min-height: 100%;
+	width: 100%;
+	/* max-width: 1440px; */
+	padding: 24px;
+	min-height: 100%;
+}
+
+.app.dark .container {
+	background-color: #23272f;
+}
+
+.app.light .container {
+	background-color: white;
+}
+
+.app.dark p,
+.app.dark h3,
+.app.dark h1 {
+	color: #f6f7f9;
+}
+
+.app.light p,
+.app.light h3,
+.app.light h1 {
+	color: black;
 }

@@ -1,33 +1,40 @@
-import React, { useRef } from "react";
-import style from './style.module.scss';
+import React, { useRef } from 'react'
+import { GrNext, GrPrevious } from 'react-icons/gr'
+import { useMyContext } from '../../context/MyContext'
+import style from './style.module.scss'
 
 interface Props {
-  children: React.ReactElement;
-  step?: number;
+	children: React.ReactElement
+	step?: number
 }
 
 const Slider = ({ children, step = 150 }: Props) => {
-  const sliderRef = useRef<HTMLElement | null>(null);
+	const sliderRef = useRef<HTMLElement | null>(null)
+	const { isDark } = useMyContext()
 
-  const scrollLeft = () => {
-    if(!sliderRef.current) return;
+	const scrollLeft = () => {
+		if (!sliderRef.current) return
 
-    sliderRef.current.scrollLeft -= step;
-  };
+		sliderRef.current.scrollLeft -= step
+	}
 
-  const scrollRight = () => {
-    if(!sliderRef.current) return;
-    
-    sliderRef.current.scrollLeft += step;
-  };
+	const scrollRight = () => {
+		if (!sliderRef.current) return
 
-  return (
-    <div className={style.slider}>
-      <button onClick={scrollLeft} className={style.arrows}>{'<'}</button>
-      {React.cloneElement(children, { ref: sliderRef })}
-      <button onClick={scrollRight} className={style.arrows}>{'>'}</button>
-    </div>
-  );
-};
+		sliderRef.current.scrollLeft += step
+	}
 
-export default Slider;
+	return (
+		<div className={`${style.slider} ${isDark ? style.dark : style.light} `}>
+			<button onClick={scrollLeft} className={style.arrows}>
+				<GrPrevious />
+			</button>
+			{React.cloneElement(children, { ref: sliderRef })}
+			<button onClick={scrollRight} className={style.arrows}>
+				<GrNext />
+			</button>
+		</div>
+	)
+}
+
+export default Slider

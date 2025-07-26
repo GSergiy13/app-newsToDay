@@ -1,29 +1,41 @@
 .pagination {
-  display: flex;
-  width: 100%;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	width: 100%;
+	gap: 12px;
+	align-items: center;
+	justify-content: center;
 }
 
 .pageNumber,
 .arrow {
-  border: none;
-  background-color: white;
-  cursor: pointer;
+	border: none;
+	background-color: white;
+	cursor: pointer;
 }
 
 .pageNumber:disabled,
 .arrow:disabled {
-  cursor: default;
+	cursor: default;
 }
 
 .pageNumber {
-  padding: 8px;
+	padding: 8px;
 }
 
 .list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pagination.dark .pageNumber,
+.pagination.dark .arrow {
+	background-color: #23272f;
+	color: #f6f7f9;
+}
+
+.pagination.light .pageNumber,
+.pagination.light .arrow {
+	background-color: white;
+	color: black;
 }
