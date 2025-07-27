@@ -1,6 +1,6 @@
 import { GrNext, GrPrevious } from 'react-icons/gr'
-import { useMyContext } from '../../context/MyContext'
 import { IPaginationProps } from '../../interfaces'
+import { useAppSelector } from '../../store'
 import style from './style.module.scss'
 
 export default function Pagination({
@@ -10,7 +10,7 @@ export default function Pagination({
 	henderPageClick,
 	currentPage,
 }: IPaginationProps) {
-	const { isDark } = useMyContext()
+	const { isDark } = useAppSelector(state => state.theme)
 
 	return (
 		<div className={`${style.pagination} ${isDark ? style.dark : style.light}`}>

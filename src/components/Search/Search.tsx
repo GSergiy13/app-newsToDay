@@ -1,4 +1,4 @@
-import { useMyContext } from '../../context/MyContext'
+import { useAppSelector } from '../../store'
 import style from './style.module.scss'
 
 interface Props {
@@ -7,8 +7,7 @@ interface Props {
 }
 
 export default function Search({ keywords, setKeywords }: Props) {
-	const { isDark } = useMyContext()
-
+	const { isDark } = useAppSelector(state => state.theme)
 	return (
 		<div className={`${style.search} ${isDark ? style.dark : style.light}`}>
 			<input

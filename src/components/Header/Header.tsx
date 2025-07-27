@@ -1,13 +1,16 @@
+import { useDispatch } from 'react-redux'
 import { themeIcons } from '../../assets/index.ts'
-import { useMyContext } from '../../context/MyContext.tsx'
 import { formatDate } from '../../helper/formatDate.ts'
+import { useAppSelector } from '../../store/index.ts'
+import { toggleTheme } from '../../store/slice/themeSlice.ts'
 import style from './style.module.scss'
 
 export default function Header() {
-	const { isDark, toggleTheme } = useMyContext()
+	const dispatch = useDispatch()
+	const { isDark } = useAppSelector(state => state.theme)
 
 	const handlerChangeTheme = () => {
-		toggleTheme()
+		dispatch(toggleTheme())
 	}
 
 	return (

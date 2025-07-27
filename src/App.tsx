@@ -1,9 +1,9 @@
 import Header from './components/Header/Header'
-import { useMyContext } from './context/MyContext'
 import Main from './pages/Main/Main'
+import { useAppSelector } from './store'
 
 function App() {
-	const { isDark } = useMyContext()
+	const { isDark } = useAppSelector(state => state.theme)
 
 	return (
 		<div className={`app ${isDark ? 'dark' : 'light'}`}>

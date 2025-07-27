@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { GrNext, GrPrevious } from 'react-icons/gr'
-import { useMyContext } from '../../context/MyContext'
+import { useAppSelector } from '../../store'
 import style from './style.module.scss'
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 
 const Slider = ({ children, step = 150 }: Props) => {
 	const sliderRef = useRef<HTMLElement | null>(null)
-	const { isDark } = useMyContext()
+	const { isDark } = useAppSelector(state => state.theme)
 
 	const scrollLeft = () => {
 		if (!sliderRef.current) return
